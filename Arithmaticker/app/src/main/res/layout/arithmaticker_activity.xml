@@ -3,7 +3,7 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".Arithmaticker">
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".Arithmaticker"><![CDATA[
 
     TextView android:text="@string/hello_world" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,58 +18,73 @@
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="ARITHMATICKER"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true" />
+    ]]>
 
     <Chronometer
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/arith_timer"
-        android:layout_below="@+id/textView2"
-        android:layout_alignParentStart="true"
-        android:text="00:00" />
+        android:text="00:00"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="START"
-        android:id="@+id/button"
+        android:text="New Button"
+        android:id="@+id/button5"
+        android:onClick="buttonTwo"
+        android:layout_above="@+id/button7"
+        android:layout_alignStart="@+id/button7"
+        android:layout_marginBottom="64dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button6"
+        android:onClick="buttonThree"
+        android:layout_alignTop="@+id/button7" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button7"
+        android:onClick="buttonFour"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:onClick="startArithTimer" />
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PAUSE"
-        android:id="@+id/button2"
-        android:layout_alignBottom="@+id/button"
-        android:layout_alignParentEnd="true"
-        android:onClick="pauseArithTimer" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="RESET"
-        android:id="@+id/button3"
-        android:layout_alignBottom="@+id/button"
-        android:layout_centerHorizontal="true"
-        android:onClick="resetArithTimer" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Generate Random"
+        android:text="New Button"
         android:id="@+id/button4"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignTop="@+id/button5"
+        android:layout_alignParentStart="true"
+        android:onClick="buttonOne"
+        android:nestedScrollingEnabled="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="100"
+        android:id="@+id/bigNum"
+        android:textSize="80dp"
+        android:layout_below="@+id/arith_timer"
+        android:layout_toStartOf="@+id/button5" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/triesCounter"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/bigNum" /><![CDATA[
+
+
 
     Button
         style="?android:attr/buttonStyleSmall"
@@ -80,4 +95,6 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
+
+]]>
 </RelativeLayout>

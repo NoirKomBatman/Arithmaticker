@@ -6,19 +6,39 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class Arithmaticker extends ActionBarActivity {
 
     private Chronometer chronometer;
     private long timeWhenStopped = 0;
+    private Question questions;
+    private int answer;
+    private String bigNumber;
+    private ArrayList<Integer> choices;
+    private Button button1;
+    private Button button2;
+    private Button button3;
+    private Button button4;
+    private TextView bigQuestion;
+    private Tries tries;
+    private TextView triesCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.arithmaticker_activity);
         chronometer = (Chronometer) findViewById(R.id.arith_timer);
+        generateQuestion();
+        tries = new Tries();
+        triesCount = (TextView)findViewById(R.id.triesCounter);
+        triesCount.setText("0");
     }
 
 
@@ -44,6 +64,25 @@ public class Arithmaticker extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void generateQuestion(){
+        questions = new Question();
+        bigNumber = questions.getBigNumber();
+        answer = questions.getCorrectAnswer();
+        choices = new ArrayList<Integer>();
+        choices = questions.getAnswers();
+        Collections.shuffle(choices);
+        bigQuestion = (TextView)findViewById(R.id.bigNum);
+        bigQuestion.setText(bigNumber);
+        button1 = (Button)findViewById(R.id.button4);
+        button2 = (Button)findViewById(R.id.button5);
+        button3 = (Button)findViewById(R.id.button6);
+        button4 = (Button)findViewById(R.id.button7);
+        button1.setText(choices.get(0).toString());
+        button2.setText(choices.get(1).toString());
+        button3.setText(choices.get(2).toString());
+        button4.setText(choices.get(3).toString());
+    }
+
     public void startArithTimer(View v){
         chronometer.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
         chronometer.start();
@@ -61,10 +100,32 @@ public class Arithmaticker extends ActionBarActivity {
     }
 
 
+    public void buttonOne(View v){
+        button1 = (Button) v;
+        isCorrect(button1);
+    }
+
+    public void buttonTwo(View v){
+        button2 = (Button) v;
+        isCorrect(button2);
+    }
+    public void buttonThree(View v){
+        button3 = (Button) v;
+        isCorrect(button3);
+    }
+
+    public void buttonFour(View v){
+        button4 = (Button) v;
+        isCorrect(button4);
+    }
 
 
-
-
-
-
+    public void isCorrect(Button v){
+        if(answer == Integer.parseInt((((Button) v).getText().toString()))){
+            generateQuestion();
+        } else {
+            tries.update();
+            triesCount.setText(Integer.toString(tries.getTries()));
+        }
+    }
 }

@@ -42,10 +42,11 @@ public class Question {
         incorrect2 = answer + 2 * getRand();
         incorrect3 = answer + 3 * getRand();
 
-        answers.add(answer);
-        answers.add(incorrect1);
-        answers.add(incorrect2);
-        answers.add(incorrect3);
+        answers = new ArrayList<Integer>();
+        answers.add((Integer)answer);
+        answers.add((Integer)incorrect1);
+        answers.add((Integer)incorrect2);
+        answers.add((Integer)incorrect3);
     }
 
     //EFFECTS: returns either +1 or -1
@@ -64,4 +65,8 @@ public class Question {
     public int getCorrectAnswer() {
         return answer;
     }
-}
+
+    public String getBigNumber() {
+        return Integer.toString(bigNumber);
+    }
+    }
